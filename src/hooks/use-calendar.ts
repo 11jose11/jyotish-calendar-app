@@ -10,15 +10,19 @@ import {
   getMonthlyCalendar, 
   getMotionStates, 
   getYogas,
-  getPlanetSpeeds,
-  type Place, 
-  type PlaceDetails, 
-  type MonthlyCalendarResponse, 
-  type MotionStatesResponse,
-  type YogasResponse,
-  type PlanetSpeedsResponse
+  getPlanetSpeeds
 } from '@/lib/api';
-import { PLANETS, ANCHOR_OPTIONS, UNIT_OPTIONS } from '@/types/api';
+import type { 
+  Place, 
+  PlaceDetails, 
+  MonthlyCalendarResponse, 
+  MotionStatesResponse,
+  YogasResponse,
+  PlanetSpeedsResponse,
+  PLANETS, 
+  ANCHOR_OPTIONS, 
+  UNIT_OPTIONS 
+} from '@/types/api';
 
 // Local storage keys
 const STORAGE_KEYS = {

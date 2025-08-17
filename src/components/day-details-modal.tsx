@@ -81,7 +81,7 @@ export function DayDetailsModal({
   const generateTextReport = () => {
     if (!dayData) return '';
     
-    let report = `Calendario Jyotiṣa - ${format(date, 'EEEE, d MMMM yyyy', { locale: { code: 'es' } })}\n`;
+    let report = `Calendario Jyotiṣa - ${format(date, 'EEEE, d MMMM yyyy')}\n`;
     if (placeName) report += `Lugar: ${placeName}\n`;
     if (timezone) report += `Zona horaria: ${timezone}\n`;
     report += `Hora de referencia: ${dayData.anchor_ts_local}\n\n`;
@@ -155,7 +155,7 @@ export function DayDetailsModal({
         <DialogHeader>
           <DialogTitle className="flex items-center justify-between">
             <span>
-              Detalles del {format(date, 'EEEE, d MMMM yyyy', { locale: { code: 'es' } })}
+              Detalles del {format(date, 'EEEE, d MMMM yyyy')}
             </span>
             <Button variant="ghost" size="sm" onClick={onClose}>
               <X className="h-4 w-4" />

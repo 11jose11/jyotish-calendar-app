@@ -103,6 +103,39 @@ export interface MotionStatesResponse {
   end: string;
   tzname: string;
   step_minutes: number;
+  states: MotionState[];
+}
+
+export interface YogasResponse {
+  start: string;
+  end: string;
+  place_id: string;
+  granularity: string;
+  yogas: YogaInfo[];
+}
+
+export interface PlanetSpeed {
+  planet: string;
+  name_sanskrit: string;
+  name_spanish: string;
+  speed_deg_per_day: number;
+  motion_state: string;
+  is_retrograde: boolean;
+  change_date?: string;
+}
+
+export interface PlanetSpeedsResponse {
+  start: string;
+  end: string;
+  place_id: string;
+  planets: PlanetSpeed[];
+}
+
+export interface MotionStatesResponse {
+  start: string;
+  end: string;
+  tzname: string;
+  step_minutes: number;
   planets: string[];
   mode: string;
   states: MotionState[];

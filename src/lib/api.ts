@@ -1,119 +1,7 @@
 // API Configuration
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://jyotish-api-814110081793.us-central1.run.app';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://jyotish-api-814110081793.us-central1.run.app';
 
-// Types for the Jyotish API
-export interface Place {
-  place_id: string;
-  description: string;
-  structured_formatting: {
-    main_text: string;
-    secondary_text: string;
-  };
-}
 
-export interface PlaceDetails {
-  place_id: string;
-  formatted_address: string;
-  geometry: {
-    location: {
-      lat: number;
-      lng: number;
-    };
-  };
-  timezone: {
-    timeZoneId: string;
-    rawOffset: number;
-    dstOffset: number;
-  };
-}
-
-export interface PlanetPosition {
-  lon_decimal: number;
-  lon_dms: string;
-  rasi: string;
-  rasi_index: number;
-  nakshatra: string;
-  nak_index: number;
-  pada: number;
-  retrograde: boolean;
-  motion_state: string;
-  changedNakshatra?: boolean;
-  changedPada?: boolean;
-  changedRasi?: boolean;
-  speed_deg_per_day?: number;
-}
-
-export interface DayData {
-  date: string;
-  anchor_ts_local: string;
-  planets: Record<string, PlanetPosition>;
-  events?: CalendarEvent[];
-  nakshatras?: Record<string, NakshatraInfo>;
-  yogas?: YogaInfo[];
-}
-
-export interface CalendarEvent {
-  type: string;
-  planet: string;
-  description: string;
-  ts_local: string;
-  details?: any;
-}
-
-export interface MonthlyCalendarResponse {
-  year: number;
-  month: number;
-  place_id: string;
-  anchor: string;
-  units: string;
-  days: DayData[];
-}
-
-export interface NakshatraInfo {
-  name: string;
-  name_sanskrit: string;
-  name_spanish: string;
-  pada: number;
-  deity: string;
-  element: string;
-  color: string;
-  symbol: string;
-}
-
-export interface YogaInfo {
-  name: string;
-  name_sanskrit: string;
-  name_spanish: string;
-  polarity: 'positive' | 'negative' | 'neutral';
-  type: string;
-  description: string;
-  color: string;
-}
-
-export interface PlanetSpeed {
-  planet: string;
-  name_sanskrit: string;
-  name_spanish: string;
-  speed_deg_per_day: number;
-  motion_state: string;
-  is_retrograde: boolean;
-  change_date?: string;
-}
-
-export interface YogasResponse {
-  start: string;
-  end: string;
-  place_id: string;
-  granularity: string;
-  yogas: YogaInfo[];
-}
-
-export interface PlanetSpeedsResponse {
-  start: string;
-  end: string;
-  place_id: string;
-  planets: PlanetSpeed[];
-}
 
 // API functions for Jyotiṣa Calendar
 import type { 
@@ -122,14 +10,14 @@ import type {
   MonthlyCalendarResponse, 
   MotionStatesResponse,
   YogasResponse,
-  PlanetSpeedsResponse
+  PlanetSpeedsResponse,
+  PlanetPosition,
+  DayData,
+  CalendarEvent,
+  NakshatraInfo,
+  YogaInfo,
+  PlanetSpeed
 } from '@/types/api';
-
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-
-if (!API_BASE_URL) {
-  throw new Error('NEXT_PUBLIC_API_BASE_URL is not defined');
-}
 
 // Generic API call function
 async function apiCall<T>(endpoint: string, params?: Record<string, any>): Promise<T> {

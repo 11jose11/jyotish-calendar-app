@@ -88,7 +88,7 @@ export function DayCell({
 
     return (
       <div className="space-y-2">
-        <div className="font-semibold">{format(date, 'EEEE, d MMMM yyyy', { locale: { code: 'es' } })}</div>
+        <div className="font-semibold">{format(date, 'EEEE, d MMMM yyyy')}</div>
         
         {changes.length > 0 && (
           <div className="space-y-1">
@@ -120,8 +120,8 @@ export function DayCell({
 
   // Check if there are any yogas for this day
   const hasYogas = dayData?.yogas && dayData.yogas.length > 0;
-  const hasPositiveYogas = hasYogas && dayData.yogas.some(y => y.polarity === 'positive');
-  const hasNegativeYogas = hasYogas && dayData.yogas.some(y => y.polarity === 'negative');
+  const hasPositiveYogas = hasYogas && dayData.yogas!.some(y => y.polarity === 'positive');
+  const hasNegativeYogas = hasYogas && dayData.yogas!.some(y => y.polarity === 'negative');
 
   // Get background color based on yogas
   const getBackgroundColor = () => {
